@@ -1,0 +1,20 @@
+# Arquivos gerados pelo sistema
+node_modules/
+.DS_Store
+.env
+
+# Arquivos de log
+logs/
+*.log
+
+# Dependências de desenvolvimento
+devDependencies/
+
+# Dependências opcionais que não serão incluídas no pacote
+optionalDependencies/
+src/SSL/
+
+# Arquivos gerados pelo build
+build/
+dist/
+out/

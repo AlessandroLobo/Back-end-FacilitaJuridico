@@ -1,0 +1,13 @@
+# Use a imagem base oficial do PostgreSQL
+FROM postgres
+
+# Copie os arquivos de inicialização do banco de dados
+COPY init.sql /docker-entrypoint-initdb.d/
+
+# Expor a porta padrão do PostgreSQL
+EXPOSE 5432
+
+# Defina variáveis de ambiente opcionais, se necessário
+ENV POSTGRES_DB=facilitaJuridico-db
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=postgres
