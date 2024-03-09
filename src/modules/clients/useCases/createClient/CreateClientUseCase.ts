@@ -34,7 +34,6 @@ export class CreateClientUseCase {
 
   async execute({ name, email, phoneNumber, coordinateX, coordinateY }: ICreateClient): Promise<ICreateClient> {
     const client = await this.pool.connect();
-    console.log(name, email, phoneNumber, coordinateX, coordinateY);
     try {
       const query = 'INSERT INTO clients (name, email, phoneNumber,coordinateX, coordinateY) VALUES ($1, $2, $3, $4 , $5) RETURNING *';
       const values = [name, email, phoneNumber, coordinateX, coordinateY];
@@ -52,7 +51,6 @@ export class CreateClientUseCase {
   }
 
   async getClients(searchTerm: string): Promise<IClient[]> {
-    console.log('searchTerm>----', searchTerm);
     try {
       if (!searchTerm) {
         let client = await this.pool.connect();
@@ -61,7 +59,6 @@ export class CreateClientUseCase {
         FROM clients
       `;
         const result = await client.query(query);
-        console.log(result.rows);
         return result.rows;
       } else {
         let client = await this.pool.connect();
@@ -75,7 +72,6 @@ export class CreateClientUseCase {
           OR LOWER(phoneNumber) LIKE $1
       `;
         const result = await client.query(query, [`%${lowerTerm}%`]);
-        console.log(result.rows);
         return result.rows;
       }
     } catch (error) {
