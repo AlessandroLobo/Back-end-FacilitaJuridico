@@ -19,13 +19,16 @@ routes.post('/clients', async (req: Request, res: Response): Promise<void> => {
 
 // Rota para buscar todos os clientes
 routes.get('/clients', async (req: Request, res: Response): Promise<void> => {
+  console.log(req.query.searchTerm)
   try {
-    const clients = await createClientUseCase.getClients()
-    res.status(200).json({ clients })
+    const searchTerm = req.query.searchTerm as string;
+    const clients = await createClientUseCase.getClients(searchTerm);
+    res.status(200).json({ clients });
   } catch (error) {
-    console.error('Erro ao buscar clientes:', error)
-    res.status(500).json({ error: 'Erro ao buscar clientes' })
+    // console.error('Erro ao buscar clientes:', error);
+    res.status(500).json({ error: 'Erro ao buscar clientes' });
   }
-})
+});
+
 
 export { routes }
