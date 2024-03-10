@@ -20,6 +20,8 @@ git clone https://github.com/AlessandroLobo/Back-end-FacilitaJuridico.git
 2. Navigate to the project directory.
 3. Run the following command to build and start the server:
    ```bash
+   cd Back-end-FacilitaJuridico
+   
    npm install
    
    docker-compose up
