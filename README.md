@@ -12,7 +12,7 @@ This repository contains the code for a backend server built with Node.js Expres
 ## Getting Started
 1. Clone this repository to your local machine.
 ```bash
-https://github.com/AlessandroLobo/Back-end-FacilitaJuridico.git
+git clone https://github.com/AlessandroLobo/Back-end-FacilitaJuridico.git
 ```
 2. Navigate to the project directory.
 3. Run the following command to build and start the server:
