@@ -3,7 +3,7 @@
 This repository contains the code for a backend server built with Node.js Express and PostgreSQL , intended to be run using Docker Compose.
 
 ## Autor
-## Alessandro Lobo
+# Alessandro Lobo
 
 # Link to the explanatory video
 ## >> https://youtu.be/ma-kvS4QtsA <<
