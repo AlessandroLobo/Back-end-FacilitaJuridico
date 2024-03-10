@@ -1,6 +1,6 @@
 import express, { type Request, type Response } from 'express'
 import { CreateClientUseCase } from './modules/clients/useCases/createClient/CreateClientUseCase'
-import { ClientsRoutesRequest } from './modules/clientsRoutes/clientsRoutesRequest'
+import { ClientsRoutesRequest } from './modules/clientsRoutes/ClientsRoutesRequest'
 
 const routes = express.Router()
 const createClientUseCase = new CreateClientUseCase()
@@ -24,6 +24,7 @@ routes.get('/clients', async (req: Request, res: Response): Promise<void> => {
   try {
     const searchTerm = req.query.searchTerm as string;
     const clients = await createClientUseCase.getClients(searchTerm);
+
     res.status(200).json({ clients });
   } catch (error) {
     // console.error('Erro ao buscar clientes:', error);
@@ -38,7 +39,7 @@ routes.get('/clients/ClientsRoutesRequest', async (req: Request, res: Response):
 
     const calculatedRoute = await clientsRoutesRequest.findShortestRoute(clients); // Adicione o await aqui
 
-    res.status(200).json({  calculatedRoute }); // Retorne os clientes e a rota calculada
+    res.status(200).json({ calculatedRoute }); // Retorne os clientes e a rota calculada
   } catch (error) {
     res.status(500).json({ error: 'Erro ao buscar clientes' });
   }

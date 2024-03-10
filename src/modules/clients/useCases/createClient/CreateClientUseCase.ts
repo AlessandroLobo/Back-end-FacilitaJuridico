@@ -51,6 +51,7 @@ export class CreateClientUseCase {
   }
 
   async getClients(searchTerm: string): Promise<IClient[]> {
+    console.log('Search term:', searchTerm);
     try {
       if (!searchTerm) {
         let client = await this.pool.connect();
