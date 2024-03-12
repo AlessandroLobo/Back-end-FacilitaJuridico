@@ -6,7 +6,7 @@ const routes = express.Router()
 const createClientUseCase = new CreateClientUseCase()
 const clientsRoutesRequest = new ClientsRoutesRequest()
 
-// Rota para criar um novo cliente
+// Route to create a new client
 routes.post('/clients', async (req: Request, res: Response): Promise<void> => {
   const { name, email, phoneNumber, coordinateX, coordinateY } = req.body
 
@@ -19,7 +19,7 @@ routes.post('/clients', async (req: Request, res: Response): Promise<void> => {
   }
 })
 
-// Rota para buscar todos os clientes
+// Route to fetch all clients
 routes.get('/clients', async (req: Request, res: Response): Promise<void> => {
   try {
     const searchTerm = req.query.searchTerm as string;
@@ -27,11 +27,12 @@ routes.get('/clients', async (req: Request, res: Response): Promise<void> => {
 
     res.status(200).json({ clients });
   } catch (error) {
-    // console.error('Erro ao buscar clientes:', error);
+    console.error('Erro ao buscar clientes:', error);
     res.status(500).json({ error: 'Erro ao buscar clientes' });
   }
 });
 
+// Route to fetch all clients and the route calculated by the algorithm
 routes.get('/clients/ClientsRoutesRequest', async (req: Request, res: Response): Promise<void> => {
   try {
     const searchTerm = req.query.searchTerm as string;

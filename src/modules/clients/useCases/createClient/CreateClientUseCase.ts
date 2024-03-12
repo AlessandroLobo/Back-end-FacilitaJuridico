@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 
+//Interface for creating a new client.
 export interface ICreateClient {
   name: string;
   email: string;
@@ -8,6 +9,7 @@ export interface ICreateClient {
   coordinateY: number;
 }
 
+// Interface for representing a client.
 interface IClient {
   id: number;
   name: string;
@@ -17,21 +19,23 @@ interface IClient {
   coordinateY: number;
 }
 
+//Class responsible for creating clients and fetching client data.
 export class CreateClientUseCase {
   private readonly pool: Pool;
 
   constructor() {
     this.pool = new Pool({
       user: 'postgres',
-      host: 'db', // Nome do serviço do banco de dados definido em docker-compose.yml
+      host: 'db',
       database: 'facilitaJuridico-db',
       password: 'postgres',
       port: 5432,
-      max: 200, // número máximo de conexões no pool
-      idleTimeoutMillis: 30000, // tempo máximo em milissegundos que uma conexão pode ficar inativa no pool
+      max: 200,
+      idleTimeoutMillis: 30000,
     });
   }
 
+  //Method to create a new client.
   async execute({ name, email, phoneNumber, coordinateX, coordinateY }: ICreateClient): Promise<ICreateClient> {
     const client = await this.pool.connect();
     try {
@@ -50,6 +54,7 @@ export class CreateClientUseCase {
     }
   }
 
+  //Method to fetch client data.
   async getClients(searchTerm: string): Promise<IClient[]> {
     console.log('Search term:', searchTerm);
     try {

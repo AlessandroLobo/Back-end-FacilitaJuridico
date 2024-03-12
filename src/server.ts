@@ -7,7 +7,7 @@ const HOST = '0.0.0.0'
 
 const app = express()
 
-// Configuração do CORS
+// CORS Configuration
 app.use(cors({
   origin: '*',
   credentials: true,

@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 
+//Interface for creating a new client.
 export interface ICreateClient {
   name: string;
   email: string;
@@ -8,6 +9,7 @@ export interface ICreateClient {
   coordinateY: number;
 }
 
+//Interface for representing a client.
 export interface IClient {
   id: number;
   name: string;
@@ -17,6 +19,7 @@ export interface IClient {
   coordinateY: number;
 }
 
+//Class responsible for creating clients and fetching client data.
 export class ClientsRoutesRequest {
 
   // Função para calcular a distância entre dois pontos
@@ -24,7 +27,7 @@ export class ClientsRoutesRequest {
     return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
   }
 
-  // Algoritmo guloso para encontrar a rota mais curta
+  // Greedy algorithm to find the shortest route
   async findShortestRoute(clients: IClient[]): Promise<IClient[]> {
     let route: IClient[] = [{ ...clients[0] }]; // Começa do ponto 0,0 (localização da empresa)
     let unvisited = clients.slice(1); // Faz uma cópia dos clientes para poder modificar
